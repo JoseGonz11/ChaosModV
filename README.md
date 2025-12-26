@@ -31,9 +31,24 @@ Check the corresponding subdirectories for instructions on how to compile each p
 	
 ## Adding new effects
 
+ChaosModV supports three ways to add custom effects:
+
+### 1. Lua Scripts (Recommended for simple effects)
+
 You can easily add and share your own effects using the integrated Lua scripting engine. See [here](https://github.com/gta-chaos-mod/ChaosModV/wiki/Lua-Scripting) for more information.
 
-Otherwise, if you want to integrate your effect directly into the mod:
+### 2. C++ Plugin DLLs (Recommended for complex effects)
+
+Create effects as compiled DLL plugins that can be loaded dynamically without recompiling the mod. This is perfect for:
+- Performance-critical effects
+- Complex effects requiring native code
+- Effects you want to distribute independently
+
+See [PLUGIN_DEVELOPMENT.md](PLUGIN_DEVELOPMENT.md) for a complete guide on creating plugin-based effects.
+
+### 3. Built-in Effects (Requires recompilation)
+
+If you want to integrate your effect directly into the mod:
 
 1. Create a new .cpp file in the appropriate folder under `ChaosMod/Effects/db/` with a fitting name
 

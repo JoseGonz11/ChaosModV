@@ -7,6 +7,7 @@
 #include "Components/DebugSocket.h"
 #include "Components/EffectDispatchTimer.h"
 #include "Components/EffectDispatcher.h"
+#include "Components/EffectPluginLoader.h"
 #include "Components/EffectShortcuts.h"
 #include "Components/EffectSound/EffectSoundManagers.h"
 #include "Components/Failsafe.h"
@@ -175,6 +176,8 @@ static void Init()
 
 	INIT_COMPONENT("LuaScripts", "Lua scripts", LuaScripts);
 
+	INIT_COMPONENT("EffectPluginLoader", "effect plugin loader", EffectPluginLoader);
+
 	INIT_COMPONENT("EffectDispatcher", "effects dispatcher", EffectDispatcher);
 
 	INIT_COMPONENT("EffectDispatchTimer", "effects dispatch timer", EffectDispatchTimer);
@@ -199,6 +202,12 @@ static void Init()
 #endif
 
 #undef INIT_COMPONENT
+
+	// Load effect plugins from directories
+	if (ComponentExists<EffectPluginLoader>())
+	{
+		GetComponent<EffectPluginLoader>()->LoadPluginsFromDirectories();
+	}
 
 	LOG("Completed init!");
 }
