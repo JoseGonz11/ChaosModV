@@ -90,14 +90,14 @@ extern "C"
 
 	CHAOS_PLUGIN_API EffectPluginInfo *GetEffectInfo(uint32_t effectIndex)
 	{
-		if (effectIndex < 2)
+		if (effectIndex < g_PluginData.EffectCount)
 			return &g_EffectInfos[effectIndex];
 		return nullptr;
 	}
 
 	CHAOS_PLUGIN_API EffectPluginCallbacks *GetEffectCallbacks(uint32_t effectIndex)
 	{
-		if (effectIndex < 2)
+		if (effectIndex < g_PluginData.EffectCount)
 			return &g_EffectCallbacks[effectIndex];
 		return nullptr;
 	}
